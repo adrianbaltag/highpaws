@@ -5,7 +5,7 @@ This module is part of the src package.
 """
 
 # Create a Blueprint for the views
-from flask import Blueprint
+from flask import Blueprint, render_template
 
 auth = Blueprint(
     "auth", __name__
@@ -15,7 +15,7 @@ auth = Blueprint(
 @auth.route("/login")
 def login():
     """Render the login page."""
-    return "Login Page"
+    return render_template("login.html", text="Login Page by adrian")
 
 
 @auth.route("/logout")
@@ -27,4 +27,4 @@ def logout():
 @auth.route("/register")
 def register():
     """Render the registration page."""
-    return "Register Page"
+    return render_template("register.html")

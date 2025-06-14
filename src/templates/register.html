@@ -1,0 +1,38 @@
+<!-- inherit from base.html -->
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+
+
+{% block content %}
+<h1>this is register page</h1>
+
+<form action="/register" method="POST", class="form w-50 mt-5 mx-auto">
+    <h3 align="center">Sign Up</h3>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="email" aria-describedby="email" name="email" placeholder="Enter your email" required >
+      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Pet name</label>
+        <input type="text" class="form-control" id="petName" aria-describedby="name" name="petName" placeholder="Your pet name here..." required>
+        
+      </div>
+    <div class="mb-3">
+      <label for="password1" class="form-label">Password</label>
+      <input type="password" class="form-control" id="password1" name="password1" placeholder="Enter your password" required>
+    </div>
+    <!-- <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div> -->
+    <div class="mb-3">
+        <label for="password2" class="form-label">Confirm password</label>
+        <input type="password" class="form-control" id="password2" name="password2" placeholder="Confirm password" required>
+      </div>
+    <br>
+    <button type="submit" class="btn btn-outline-success w-100 btn-lg">Register</button>
+  </form>
+
+{% endblock %}
