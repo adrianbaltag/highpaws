@@ -6,7 +6,7 @@
 {% block content %}
 
 <div class="form-container d-flex align-items-center justify-content-center min-vh-100">
-    <form action="/register" method="POST", class="form w-50 shadow p-4 rounded  needs-validation" novalidate>
+    <form action="/register" method="POST", class="form w-100 shadow p-4 rounded  needs-validation" novalidate>
         <h3 align="center">Sign Up</h3>
         {{ form.hidden_tag() }} <!-- CSRF token for security / works in tandem with SECRET KEY-->
 
