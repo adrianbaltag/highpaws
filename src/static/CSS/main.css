@@ -4,6 +4,6 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap'); */
 
 body {
-    
+    overflow: hidden;
     background-color: #E5E5E5;
 }

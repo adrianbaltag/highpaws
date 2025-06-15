@@ -4,35 +4,89 @@
 
 
 {% block content %}
-<h1>this is register page</h1>
 
-<form action="/register" method="POST", class="form w-50 mt-5 mx-auto">
-    <h3 align="center">Sign Up</h3>
-    <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Email address</label>
-      <input type="email" class="form-control" id="email" aria-describedby="email" name="email" placeholder="Enter your email" required >
-      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-    </div>
+<div class="form-container d-flex align-items-center justify-content-center min-vh-100">
+    <form action="/register" method="POST", class="form w-50 shadow p-4 rounded  needs-validation" novalidate>
+        <h3 align="center">Sign Up</h3>
+        {{ form.hidden_tag() }} <!-- CSRF token for security / works in tandem with SECRET KEY-->
 
-    <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Pet name</label>
-        <input type="text" class="form-control" id="petName" aria-describedby="name" name="petName" placeholder="Your pet name here..." required>
+        <!--  ! email -->
+        {{ form.email.label(class="form-label") }}
+        <!-- error validation -->
+        {% if form.email.errors %}
+        {{ form.email(class="form-control", placeholder="Enter your email")}}
         
-      </div>
-    <div class="mb-3">
-      <label for="password1" class="form-label">Password</label>
-      <input type="password" class="form-control" id="password1" name="password1" placeholder="Enter your password" required>
-    </div>
-    <!-- <div class="mb-3 form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div> -->
-    <div class="mb-3">
-        <label for="password2" class="form-label">Confirm password</label>
-        <input type="password" class="form-control" id="password2" name="password2" placeholder="Confirm password" required>
-      </div>
+           
+                {% for error in form.email.errors %}
+                    <p class="alert alert-danger">{{ error }}</p>
+                {% endfor %}
+           
+        {% else %}
+        {{ form.email(class="form-control ",placeholder="Enter your email", value=email, required=true) }}
+        
+        {% endif %}
+            
+        
+        <!-- ! username -->
+        {{ form.username.label(class="form-label") }}
+
+        <!-- error validation -->
+        {% if form.username.errors %}
+        {{ form.username(class="form-control", placeholder="Enter your username") }}
+        
+            
+                {% for error in form.username.errors %}
+                <p class="alert alert-danger">{{ error }}</p>
+                {% endfor %}
+            
+        {% else %}
+        {{ form.username(class="form-control", placeholder="Enter your username",value=username, required=true) }}
+        {% endif %}
+
+
+        <!--! password -->
+        {{ form.password.label(class="form-label") }}
+        <!-- error validation -->
+        {% if form.password.errors %}
+        {{ form.password(class="form-control", placeholder="Enter your password") }}
+        
+            
+                {% for error in form.password.errors %}
+                <p class="alert alert-danger">{{ error }}</p>
+                {% endfor %}
+            
+        {% else %}
+        {{ form.password(class="form-control", placeholder="Enter your password",value=password, required=true) }}
+        {% endif %}
+
+        <!-- ! confirm password -->
+        {{ form.confirm_password.label(class="form-label") }}
+        <!-- error validation -->
+        {% if form.confirm_password.errors %}
+        {{ form.confirm_password(class="form-control", placeholder="Confirm password") }}
+        
+            
+                {% for error in form.confirm_password.errors %}
+                <p class="alert alert-danger">{{ error }}</p>
+                {% endfor %}
+            
+        {% else %}
+        {{ form.confirm_password(class="form-control", placeholder="Confirm password",value=confirm_password, required=true) }}
+        {% endif %}
+        
+        <!-- submit button -->
+        <br>
+        {{ form.submit(class="btn btn-outline-success w-100 btn-lg mt-5") }}
+        <br>
+        <div class="pt-5">
+            <small class="text-muted">Already have an account?</small>
+            <a href="{{url_for('auth.login')}}" class="text-decoration-none">Login here</a> <!-- redirect to login -->
+        </div>
+
+    </form>
     <br>
-    <button type="submit" class="btn btn-outline-success w-100 btn-lg">Register</button>
-  </form>
+   
+</div>
+
 
 {% endblock %}
