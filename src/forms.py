@@ -31,7 +31,7 @@ class LoginForm(FlaskForm):
         "Password",
         validators=[DataRequired(), Length(min=6)],
     )
-    remember = BooleanField(
+    remember_me = BooleanField(
         "Remember Me"
     )  # Optional field for remember me functionality
     submit = SubmitField("Login")

@@ -44,14 +44,23 @@
       {{ form.password(class="form-control", placeholder="Enter your password",value=password, required=true) }}
       {% endif %}
 
-      
+      <!-- checkbox -->
+      <div class="form-check">
+          {{ form.remember_me(class="form-check-input") }}
+          {{ form.remember_me.label(class="form-check-label") }}
+      </div>
       
       <!-- submit button -->
       <br>
       {{ form.submit(class="btn btn-outline-success w-100 btn-lg mt-5") }}
+      <!-- forgot password -->
+       <small class="text-muted ml-2">
+          <a href="#" class="text-decoration-none">Forgot Password?</a>
+       </small>
+
       <br>
       <div class="pt-5">
-          <small class="text-muted">Already have an account?</small>
+          <small class="text-muted">Need an account?</small>
           <a href="{{url_for('auth.register')}}" class="text-decoration-none">Register here</a> <!-- redirect to register -->
       </div>
 
